@@ -15,11 +15,12 @@ struct list_element* list = &a;
 void kernel_main() {
 	//return_zero();
 	led_init();
+	esp_printf(putc, "Current exe level is %d", kernel_main);
 	while (1) {
-		led_on();
-		delay();
-		led_off();
-		delay();
+		//led_on();
+		//delay();
+		//led_off();
+		//delay();
 	}
 }
 
