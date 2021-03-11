@@ -3,6 +3,7 @@
 #include "list_element.h"
 #include "gpio.h"
 #include "serial.h"
+extern struct ppage* free_list;
 int global;
 
 #define NULL (void*)0
@@ -13,9 +14,16 @@ struct list_element *head = &a;
 struct list_element* list = &a;
 
 void kernel_main() {
-	//return_zero();
-	led_init();
+	return_zero();
+	mmu_on();
+
+/*	led_init();
+	struct ppage* test = free_list;
+	test = test->next;
+	esp_print(putc, "location: %x \n", test->physical_addr);
+	test=test->next;
 	esp_printf(putc, "Current exe level is %d", kernel_main);
+*/	test = allocate_physical_pages(2);
 	while (1) {
 		//led_on();
 		//delay();
